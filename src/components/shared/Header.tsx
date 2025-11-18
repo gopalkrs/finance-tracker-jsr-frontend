@@ -15,7 +15,7 @@ const Header = ({setShowLoginModal} : any) => {
                 <DollarSign className="w-6 h-6 text-white" />
               </div>
               <span className="text-2xl font-bold text-white">
-                Fin<span className="text-emerald-400">Trek</span>
+                Fin<span className="text-emerald-400">trek</span>
               </span>
             </div>
 

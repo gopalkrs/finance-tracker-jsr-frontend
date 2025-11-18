@@ -2,18 +2,24 @@ import React, { useState } from 'react'
 import LoginModal from '../components/auth/LoginModal'
 import Header from '../components/shared/Header'
 import Footer from '../components/shared/Footer';
+import HeroSection from '../components/home/HeroSection';
+import Features from '../components/home/Features';
+import HowItWorks from '../components/home/HowItWorks';
 
 const HomePage = () => {
 
     const [showLoginModal, setShowLoginModal] = useState(false);
+    const [authMode, setAuthMode] = useState('login');
 
 
   return (
     <div>
-      {showLoginModal && <LoginModal setShowLoginModal={setShowLoginModal} />}
+      {showLoginModal && <LoginModal authMode={authMode} setAuthMode={setAuthMode} setShowLoginModal={setShowLoginModal} />}
       <Header setShowLoginModal={setShowLoginModal} />
       <main className='min-h-screen'>
-        jgj
+        <HeroSection />
+        <Features />
+        <HowItWorks />
       </main>
       <Footer />
     </div>

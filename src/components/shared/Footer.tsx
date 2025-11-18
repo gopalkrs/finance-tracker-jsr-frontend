@@ -11,7 +11,7 @@ const Footer = () => {
                 <div className="w-8 h-8 bg-linear-to-r from-emerald-500 to-teal-500 rounded-lg flex items-center justify-center">
                   <DollarSign className="w-5 h-5 text-white" />
                 </div>
-                <span className="text-xl font-bold text-white">FinanceTrack</span>
+                <span className="text-xl font-bold text-white">Fintrek</span>
               </div>
               <p className="text-gray-400 text-sm">
                 Take control of your financial future with intelligent money management.
@@ -50,7 +50,7 @@ const Footer = () => {
           </div>
           
           <div className="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm">
-            <p>&copy; 2025 FinanceTrack. All rights reserved.</p>
+            <p>&copy; 2025 Fintrek. All rights reserved.</p>
           </div>
         </div>
       </footer>
