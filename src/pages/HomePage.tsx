@@ -11,13 +11,19 @@ const HomePage = () => {
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [authMode, setAuthMode] = useState('login');
 
+    const openAuth = (mode: string) => {
+    setAuthMode(mode);
+    setShowLoginModal(true);
+    //setMobileMenuOpen(false);
+  };
+
 
   return (
     <div>
       {showLoginModal && <LoginModal authMode={authMode} setAuthMode={setAuthMode} setShowLoginModal={setShowLoginModal} />}
       <Header setShowLoginModal={setShowLoginModal} />
       <main className='min-h-screen'>
-        <HeroSection />
+        <HeroSection openAuth={openAuth} />
         <Features />
         <HowItWorks />
       </main>
