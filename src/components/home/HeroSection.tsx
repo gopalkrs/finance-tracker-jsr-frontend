@@ -1,12 +1,15 @@
 import { ArrowRight, PieChart } from "lucide-react";
+import { useAppSelector } from "../../store/hooks";
 
-const HeroSection = ({openAuth}) => {
+const HeroSection = ({openAuth} : any) => {
   const stats = [
     { value: "₹8,700", label: "Avg Monthly Overspend Saved" },
     { value: "63%", label: "Users Sticking to Budget" },
     { value: "14", label: "Custom Budgets Created" },
     { value: "31%", label: "Spending Reduction in 3 Months" },
   ];
+
+    const { user } = useAppSelector((state) => state.auth);
 
 
   return (
@@ -24,7 +27,7 @@ const HeroSection = ({openAuth}) => {
             with AI-powered insights. All your finances in one beautiful, secure
             platform.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          {!user && <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button
               onClick={() => openAuth("signup")}
               className="bg-linear-to-r from-emerald-500 to-teal-500 text-white px-8 py-4 rounded-lg hover:from-emerald-600 hover:to-teal-600 transition-all duration-300 font-medium shadow-xl flex items-center space-x-2"
@@ -35,7 +38,7 @@ const HeroSection = ({openAuth}) => {
             <button className="border-2 border-gray-700 text-gray-300 px-8 py-4 rounded-lg hover:border-emerald-500 hover:text-emerald-400 transition-all duration-300 font-medium">
               Watch Demo
             </button>
-          </div>
+          </div>}
         </div>
 
         {/* Stats */}

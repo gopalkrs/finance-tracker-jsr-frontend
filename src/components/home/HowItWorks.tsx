@@ -1,6 +1,5 @@
-import React from 'react'
+const HowItWorks = ({openAuth}: any) => {
 
-const HowItWorks = () => {
   return (
     <div>
       <section id="how-it-works" className="py-20 px-4 sm:px-6 lg:px-8">
