@@ -1,18 +1,18 @@
 import { BarChart3, CreditCard, DollarSign, LogOut, PieChart, Plus, Settings, Target, Wallet, X } from 'lucide-react'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import { closeSidebar } from '../../redux/slices/sidebarSlice';
-import { Link } from 'react-router-dom';
-import { showAddAccountModal } from '../../redux/slices/addAccountModalSlice';
+import { Link, useLocation, useParams } from 'react-router-dom';
 
-const SideBar = () => {
+const SideBar = ({activePage}: {activePage : string}) => {
 
     const dispatch = useAppDispatch();
     const {user} = useAppSelector((state) => state.auth);
     const {sidebarIsOpen} = useAppSelector((state)=> state.sidebar);
 
+    const location = useLocation();
+
 
     const handleAddAccount = () => {
-      dispatch(showAddAccountModal());
       dispatch(closeSidebar());
     };
 
@@ -35,15 +35,15 @@ const SideBar = () => {
           </div>
 
           <nav className="space-y-2">
-            <Link to={'/dashboard'} className="flex items-center space-x-3 px-4 py-3 bg-emerald-500/10 text-emerald-400 rounded-lg">
+            <Link to={'/dashboard'} className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${activePage === 'dashboard' ? 'bg-emerald-500/10 text-emerald-400' : 'text-gray-400 hover:text-white hover:bg-gray-700/50'}`}>
               <BarChart3 className="w-5 h-5" />
               <span>Dashboard</span>
             </Link>
-            <Link to={'/account'} className="flex items-center space-x-3 px-4 py-3 text-gray-400 hover:text-white hover:bg-gray-700/50 rounded-lg transition-colors">
+            <Link to={'/account'} className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${activePage === 'account' ? 'bg-emerald-500/10 text-emerald-400' : 'text-gray-400 hover:text-white hover:bg-gray-700/50'}`}>
               <Wallet className="w-5 h-5" />
               <span>Accounts</span>
             </Link>
-            <Link to={'/transactions'} className="flex items-center space-x-3 px-4 py-3 text-gray-400 hover:text-white hover:bg-gray-700/50 rounded-lg transition-colors">
+            <Link to={'/transactions'} className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${activePage === 'transactions' ? 'bg-emerald-500/10 text-emerald-400' : 'text-gray-400 hover:text-white hover:bg-gray-700/50'}`}>
               <CreditCard className="w-5 h-5" />
               <span>Transactions</span>
             </Link>
@@ -58,13 +58,14 @@ const SideBar = () => {
           </nav>
 
           <div className="mt-8 pt-8 border-t border-gray-700">
-            <button 
+            <Link 
+              to={'/account/add-new'}
               onClick={handleAddAccount}
-              className="w-full flex items-center justify-center space-x-2 px-4 py-3 bg-linear-to-r from-blue-500 to-cyan-500 text-white rounded-lg hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 font-medium"
+              className="w-full flex items-center justify-center space-x-2 px-4 py-3 bg-emerald-600 text-white rounded-lg hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 font-medium"
             >
               <Plus className="w-5 h-5" />
               <span>Add Account</span>
-            </button>
+            </Link>
           </div>
         </div>
 

@@ -6,18 +6,15 @@ import {
   TrendingDown,
   TrendingUp,
 } from "lucide-react";
-import LoggedHeader from "../components/loggedin/LoggedHeader";
+import LoggedHeader from "../components/loggedin/dashboard/LoggedHeader";
 import SideBar from "../components/loggedin/SideBar";
 import TotalBalanceCard from "../components/loggedin/dashboard/TotalBalanceCard";
 import BudgetGoals from "../components/loggedin/dashboard/BudgetGoals";
 import RecentTransactions from "../components/loggedin/dashboard/RecentTransactions";
 import SpendingByCategory from "../components/loggedin/dashboard/SpendingByCategory";
-import { useAppSelector } from "../store/hooks";
-import AddAccountModal from "../components/loggedin/dashboard/AddAccountModal";
 
 const Dashboard = () => {
 
-  const { showAddAccountModal } = useAppSelector((state) => state.addAccountModal)
   const stats = [
     {
       label: "Total Income",
@@ -55,7 +52,7 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-linear-to-br from-gray-900 via-slate-900 to-gray-900 text-white">
-      <SideBar />
+      <SideBar activePage="dashboard" />
 
       <div className="lg:ml-64 min-h-screen">
         <LoggedHeader />
@@ -94,8 +91,6 @@ const Dashboard = () => {
           <SpendingByCategory />
           <BudgetGoals />
           <RecentTransactions />
-
-          {showAddAccountModal && <AddAccountModal />}
 
         </main>
       </div>

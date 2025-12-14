@@ -1,14 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./slices/authSlice";
 import { sidebarReducer } from "./slices/sidebarSlice";
-import { addAccountModalReducer } from "./slices/addAccountModalSlice";
+import accountReducer from "./slices/accountSlice";
 
 
 export const store = configureStore({
     reducer: {
         auth: authReducer,
         sidebar: sidebarReducer,
-        addAccountModal: addAccountModalReducer,
+        account: accountReducer,
     }
 });
 
