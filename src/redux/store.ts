@@ -2,6 +2,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./slices/authSlice";
 import { sidebarReducer } from "./slices/sidebarSlice";
 import accountReducer from "./slices/accountSlice";
+import transactionReducer from "./slices/transactionSlice";
+import userStatsReducer from "./slices/dashboardSlice";
 
 
 export const store = configureStore({
@@ -9,6 +11,8 @@ export const store = configureStore({
         auth: authReducer,
         sidebar: sidebarReducer,
         account: accountReducer,
+        transaction: transactionReducer,
+        userStats : userStatsReducer,
     }
 });
 

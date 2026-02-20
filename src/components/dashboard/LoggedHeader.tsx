@@ -1,8 +1,8 @@
 import { Bell, Menu, Search } from "lucide-react";
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import { openSidebar } from "../../../redux/slices/sidebarSlice";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { openSidebar } from "../../redux/slices/sidebarSlice";
 import { useEffect } from "react";
-import { loadUser } from "../../../redux/slices/authSlice";
+import { loadUser } from "../../redux/slices/authSlice";
 
 const LoggedHeader = () => {
   const { user } = useAppSelector((state) => state.auth);

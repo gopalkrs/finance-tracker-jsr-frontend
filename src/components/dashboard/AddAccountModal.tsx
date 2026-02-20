@@ -1,6 +1,6 @@
 import { CreditCard, DollarSign, Plus, Wallet, X } from 'lucide-react';
-import { useAppDispatch } from '../../../store/hooks';
-import { closeAddAccountModal } from '../../../redux/slices/addAccountModalSlice';
+import { useAppDispatch } from '../../store/hooks';
+import { closeAddAccountModal } from '../../redux/slices/addAccountModalSlice';
 
 const AddAccountModal = () => {
 

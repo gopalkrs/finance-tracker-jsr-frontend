@@ -1,6 +1,6 @@
 import { Bell, Menu, RefreshCw, Search } from 'lucide-react';
-import { useAppDispatch } from '../../../store/hooks';
-import { openSidebar } from '../../../redux/slices/sidebarSlice';
+import { useAppDispatch } from '../../store/hooks';
+import { openSidebar } from '../../redux/slices/sidebarSlice';
 
 const AccountHeader = () => {
 

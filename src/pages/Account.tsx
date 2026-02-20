@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
-import SideBar from '../components/loggedin/SideBar'
-import AccountHeader from '../components/loggedin/account/AccountHeader'
-import AccountList from '../components/loggedin/account/AccountList'
-import SummaryCards from '../components/loggedin/account/SummaryCards'
+import SideBar from '../components/shared/SideBar'
+import AccountHeader from '../components/account/AccountHeader'
+import AccountList from '../components/account/AccountList'
+import SummaryCards from '../components/account/SummaryCards'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { getAllAccounts } from '@/redux/slices/accountSlice'
 

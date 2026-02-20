@@ -2,6 +2,7 @@ import { BarChart3, CreditCard, DollarSign, LogOut, PieChart, Plus, Settings, Ta
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import { closeSidebar } from '../../redux/slices/sidebarSlice';
 import { Link, useLocation, useParams } from 'react-router-dom';
+import { logoutUser } from '@/redux/slices/authSlice';
 
 const SideBar = ({activePage}: {activePage : string}) => {
 
@@ -83,7 +84,7 @@ const SideBar = ({activePage}: {activePage : string}) => {
             <button className="flex-1 flex items-center justify-center px-3 py-2 bg-gray-700/50 hover:bg-gray-700 rounded-lg transition-colors">
               <Settings className="w-4 h-4" />
             </button>
-            <button className="flex-1 flex items-center justify-center px-3 py-2 bg-gray-700/50 hover:bg-gray-700 rounded-lg transition-colors">
+            <button onClick={()=>dispatch(logoutUser())} className="flex-1 flex items-center justify-center px-3 py-2 bg-gray-700/50 hover:bg-gray-700 rounded-lg transition-colors">
               <LogOut className="w-4 h-4" />
             </button>
           </div>

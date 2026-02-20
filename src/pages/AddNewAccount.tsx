@@ -1,6 +1,6 @@
-import AddAccountForm from "@/components/loggedin/add-account/AddAccountForm";
-import AddAccountHeader from "@/components/loggedin/add-account/AddAccountHeader";
-import ProgressSteps from "@/components/loggedin/add-account/ProgressSteps";
+import AddAccountForm from "@/components/account/add-account/AddAccountForm";
+import AddAccountHeader from "@/components/account/add-account/AddAccountHeader";
+import ProgressSteps from "@/components/account/add-account/ProgressSteps";
 import Footer from "@/components/shared/Footer";
 import { useState } from "react";
 

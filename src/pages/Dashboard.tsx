@@ -1,54 +1,72 @@
 import {
   ArrowDownRight,
   ArrowUpRight,
-  BarChart3,
   PieChart,
   TrendingDown,
   TrendingUp,
+  Wallet,
 } from "lucide-react";
-import LoggedHeader from "../components/loggedin/dashboard/LoggedHeader";
-import SideBar from "../components/loggedin/SideBar";
-import TotalBalanceCard from "../components/loggedin/dashboard/TotalBalanceCard";
-import BudgetGoals from "../components/loggedin/dashboard/BudgetGoals";
-import RecentTransactions from "../components/loggedin/dashboard/RecentTransactions";
-import SpendingByCategory from "../components/loggedin/dashboard/SpendingByCategory";
+import LoggedHeader from "../components/dashboard/LoggedHeader";
+import SideBar from "../components/shared/SideBar";
+import TotalBalanceCard from "../components/dashboard/TotalBalanceCard";
+import BudgetGoals from "../components/dashboard/BudgetGoals";
+import RecentTransactions from "../components/dashboard/RecentTransactions";
+import SpendingByCategory from "../components/dashboard/SpendingByCategory";
+import { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { getAllAccounts } from "@/redux/slices/accountSlice";
+import { getUserStats } from "@/redux/slices/dashboardSlice";
 
 const Dashboard = () => {
 
-  const stats = [
-    {
-      label: "Total Income",
-      value: "$8,450",
-      change: "+12.5%",
-      trend: "up",
-      icon: <TrendingUp className="w-6 h-6" />,
-      color: "from-emerald-500 to-teal-500",
-    },
-    {
-      label: "Total Expenses",
-      value: "$3,240",
-      change: "-8.2%",
-      trend: "down",
-      icon: <TrendingDown className="w-6 h-6" />,
-      color: "from-orange-500 to-red-500",
-    },
-    {
-      label: "Savings Rate",
-      value: "61.6%",
-      change: "+5.3%",
-      trend: "up",
-      icon: <PieChart className="w-6 h-6" />,
-      color: "from-blue-500 to-cyan-500",
-    },
-    {
-      label: "Investments",
-      value: "$15,840",
-      change: "+18.7%",
-      trend: "up",
-      icon: <BarChart3 className="w-6 h-6" />,
-      color: "from-purple-500 to-pink-500",
-    },
-  ];
+  const dispatch = useAppDispatch();
+
+  const { userStats, isLoadingStats, error } = useAppSelector((state) => state.userStats); 
+  
+    useEffect(()=>{
+      dispatch(getAllAccounts());
+      dispatch(getUserStats());
+    },[]);
+
+  const [stats, setStats] = useState([
+  {
+    key: "income",
+    label: "Total Income",
+    value: userStats ? `$${userStats.totalIncome.toLocaleString()}` : "--",
+    change: "--",
+    trend: "up",
+    icon: <TrendingUp className="w-6 h-6" />,
+    color: "from-emerald-500 to-teal-500",
+  },
+  {
+    key: "expense",
+    label: "Total Expense",
+    value: userStats ? `$${userStats.totalExpense.toLocaleString()}` : "--",
+    change: "--",
+    trend: "down",
+    icon: <TrendingDown className="w-6 h-6" />,
+    color: "from-rose-500 to-pink-500",
+  },
+  {
+    key: "savings",
+    label: "Savings",
+    value: userStats ? `$${userStats.totalSavings.toLocaleString()}` : "--",
+    change: "--",
+    trend: "up",
+    icon: <Wallet className="w-6 h-6" />,
+    color: "from-blue-500 to-indigo-500",
+  },
+  {
+    key: "investment",
+    label: "Total Investments",
+    value: userStats ? `$${userStats.totalInvestments.toLocaleString()}` : "--",
+    change: "--",
+    trend: "up",
+    icon: <PieChart className="w-6 h-6" />,
+    color: "from-purple-500 to-fuchsia-500",
+  },
+]);
+
 
   return (
     <div className="min-h-screen bg-linear-to-br from-gray-900 via-slate-900 to-gray-900 text-white">
